@@ -24,7 +24,6 @@ const search = (driver) => {
     .findElement(By.css('.b_searchboxSubmit'))
     .click()
     .then(() => logger.info('Clicked "I\'m feeling lucky"'))
-    .then(() => logger.info('Clicked "I\'m feeling lucky"'))
     .catch(errorHandler.logAndTerminate);
 };
 
