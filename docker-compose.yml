@@ -50,5 +50,5 @@ services:
     image: node:10.15.0-alpine
     volumes:
       - ./tests:/home/node/app/tests
-        - ./utils:/home/node/app/utils
+      - ./utils:/home/node/app/utils
   # --- END: Selenium Standalone --- #

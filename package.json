@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "eslint": "gulp eslint",
-    "test": "node ./tests",
-    "precommit": "npm run eslint"
+    "test": ". scripts/run-tests.sh",
+    "test-debug": ". scripts/run-tests-debug.sh",
+    "precommit": "npm run eslint",
+    "vnc": "open vnc://:secret@127.0.0.1:5901"
   },
   "husky": {
     "hooks": {
@@ -17,7 +19,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@commitlint/cli": "7.6.0",
     "@commitlint/config-conventional": "7.6.0",
     "chalk": "2.4.2",
