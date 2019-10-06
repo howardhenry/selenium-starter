@@ -1,0 +1,54 @@
+version: "3"
+services:
+  # --- START: Selenium Grid --- #
+  selenium-hub:
+    container_name: selenium-hub
+    image: selenium/hub:3.141.59-vanadium
+    ports:
+      - 4444:4444
+
+  node-chrome:
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+    image: selenium/node-chrome:3.141.59-vanadium
+    volumes:
+      - /dev/shm:/dev/shm
+
+  test:
+    build: .
+    command: "./node_modules/.bin/jest tests"
+    depends_on:
+      - selenium-hub
+    environment:
+      - SELENIUM_URL=http://selenium-hub:4444/wd/hub
+    image: node:10.15.0-alpine
+    volumes:
+      - ./tests:/home/node/app/tests
+      - ./utils:/home/node/app/utils
+  # --- END: Selenium Grid --- #
+
+
+  # --- START: Selenium Standalone --- #
+  standalone-chrome-debug:
+    image: selenium/standalone-chrome-debug:3.141.59-vanadium
+    ports:
+      - 4444:4444
+      - 5901:5900
+    volumes:
+      - /dev/shm:/dev/shm
+
+  test-debug:
+    build: .
+    command: "./node_modules/.bin/jest tests"
+    depends_on:
+      - standalone-chrome-debug
+    environment:
+      - SELENIUM_URL=http://standalone-chrome-debug:4444/wd/hub
+    image: node:10.15.0-alpine
+    volumes:
+      - ./tests:/home/node/app/tests
+        - ./utils:/home/node/app/utils
+  # --- END: Selenium Standalone --- #
