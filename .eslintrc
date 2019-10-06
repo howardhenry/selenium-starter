@@ -5,6 +5,8 @@
     "mocha": true
   },
   "globals": {
+    "afterAll": true,
+    "beforeAll": true,
     "describe": true,
     "expect": true,
     "jest": true,
