@@ -19,7 +19,7 @@ services:
 
   test:
     build: .
-    command: "./node_modules/.bin/jest tests"
+    command: "./node_modules/.bin/jest tests --maxWorkers=5"
     depends_on:
       - selenium-hub
     environment:
