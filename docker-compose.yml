@@ -8,7 +8,6 @@ services:
       - 4444:4444
 
   node-chrome:
-    container_name: node-chrome
     depends_on:
       - selenium-hub
     environment:
