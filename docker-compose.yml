@@ -44,7 +44,7 @@ services:
   test-debug:
     container_name: test-debug
     build: .
-    command: "node --inspect ./node_modules/.bin/jest --runInBand=false tests"
+    command: "node --inspect ./node_modules/.bin/jest --runInBand=true tests"
     depends_on:
       - standalone-chrome-debug
     environment:
