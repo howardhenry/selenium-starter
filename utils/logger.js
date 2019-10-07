@@ -1,14 +1,15 @@
-const { Logger, transports } = require('winston');
+const { createLogger, format, transports } = require('winston');
 const chalk = require('chalk');
 const _ = require('lodash');
 
-const logger = new Logger({
+const logger = createLogger({
   transports: [
     new transports.Console({
-      prettyPrint: true,
-      stringify: true,
+      format: format.simple(),
       humanReadableUnhandledException: true,
-      level: 'debug'
+      level: 'debug',
+      prettyPrint: true,
+      stringify: true
     })
   ]
 });
@@ -26,7 +27,13 @@ const logMessage = (level, msg) => {
 
   enhancedMsg = enhancedMsg.replace('\n', '. ');
 
-  const colors = { debug: 'cyan', info: 'white', success: 'green', warn: 'yellow', error: 'red' };
+  const colors = {
+    debug: 'cyan',
+    error: 'red',
+    info: 'white',
+    success: 'green',
+    warn: 'yellow'
+  };
   const color = colors[level];
 
   const logLevel = level === 'success' ? 'info' : level;
@@ -36,8 +43,8 @@ const logMessage = (level, msg) => {
 
 module.exports = {
   debug: (msg) => logMessage('debug', msg),
+  error: (msg) => logMessage('error', msg),
   info: (msg) => logMessage('info', msg),
   success: (msg) => logMessage('success', msg),
-  warn: (msg) => logMessage('warn', msg),
-  error: (msg) => logMessage('error', msg)
+  warn: (msg) => logMessage('warn', msg)
 };

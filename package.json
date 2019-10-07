@@ -35,6 +35,6 @@
     "jest": "24.9.0",
     "lodash": "4.17.11",
     "selenium-webdriver": "3.6.0",
-    "winston": "2.2.0"
+    "winston": "3.2.1"
   }
 }
