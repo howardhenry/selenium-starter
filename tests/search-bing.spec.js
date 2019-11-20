@@ -21,11 +21,11 @@ describe('Search Bing', () => {
       .get(data.baseUrl);
 
     await testDriver
-      .findElement(By.css('.b_searchbox'))
+      .findElement(By.css('.sb_form_q'))
       .sendKeys(data.searchString);
 
     await testDriver
-      .findElement(By.css('.b_searchboxSubmit'))
+      .findElement(By.css('.search.icon svg'))
       .click();
   });
 });
