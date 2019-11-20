@@ -6,7 +6,7 @@
   "scripts": {
     "eslint": "gulp eslint",
     "test": ". scripts/run-tests.sh",
-    "test-debug": "scripts/run-tests-debug.sh",
+    "test-debug": ". scripts/run-tests-debug.sh",
     "precommit": "npm run eslint",
     "vnc": "open vnc://:secret@127.0.0.1:5901"
   },
