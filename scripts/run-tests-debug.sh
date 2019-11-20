@@ -3,7 +3,6 @@
 # Terminate all running services before starting
 docker-compose stop --timeout=0 && docker-compose rm -f
 
-# Build "test-debug" container - triggers initializing Selenium Standalone in
 # VNC enabled server
 docker-compose build test-debug
 docker-compose run test-debug
